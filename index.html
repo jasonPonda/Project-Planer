@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript To Do List</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
+    <!-- Font Awesome pour les logo image-->
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <!-- Le CSS pour le style la page-->
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!--Horloge-->
+    <div class="clock2">
+        <div class="wrap">
+            <span class="heure"></span>
+            <span class="minute"></span>
+            <span class="seconde"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans mt-20">
+        <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+            <div class="mb-4">
+                <h1 class="text-3xl md:text-4xl text-indigo-600 font-medium mb-2">
+                    Planificateur de projet
+
+                </h1>
+                <div class="flex mt-4">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+                        name="text" id="text" placeholder="Add Todo" />
+                    <input id='party' type="datetime-local" name="partydate " />
+                    <input type="date" max="2012-06-25" min="date().getTime();" name="the_date">
+                    <input type="hidden" id="saveIndex" />
+
+                    <button class="p-2 lg:px-4 md:mx-2 text-center border border-solid border-indigo-600 rounded text-white bg-indigo-600 transition-colors duration-300 mt-1 md:mt-0 md:ml-1" id="filter" >filtre</button>
+                    <button class="p-2 lg:px-4 md:mx-2 text-center border border-solid border-indigo-600 rounded text-white bg-indigo-600 transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
+                        id="add-task-btn">Add</button>
+
+                    <button
+                        class="p-2 lg:px-4 md:mx-2 text-center border border-solid border-indigo-600 rounded bg-indigo-600 text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
+                        style="display: none" id="save-todo-btn">Edit Todo</button>
+                </div>
+            </div>
+            <div id="listBox"></div>
+        </div>
+    </div>
+
+
+    <script defer src="script.js"></script>
+</body>
+
+</html>

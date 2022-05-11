@@ -1,6 +1,6 @@
 body{
     background-color: #21D4FD;
-   background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
    
    }
    
@@ -74,6 +74,7 @@ body{
    }
    
    /*date*/
+   
    #party{
       border:5px solid #4F46E5; 
       border-radius: 5px;
@@ -84,7 +85,38 @@ body{
    
    p{
        font-family: 'Montserrat', sans-serif;
-   
    }
+   /*Filter*/
+   .searchBar{
+       margin-left: 28%;
+       width: 50%;
+       border: 1px solid #1b1b1b;
+       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+       border-radius: 5px;
+      
+   }
+   
+   #filterDiv{
+       margin-left: 38%;
+       border: 1px solid #4F46E5;
+       --tw-bg-opacity: 1;
+       background-color: rgba(255,255,255,var(--tw-bg-opacity));
+       border-radius: 5px;
+       width: 25%;
+       margin-top:3%;
+       padding: 1.5rem;
+   }
+   #filterSpan{
+       font-size: 2.25rem;
+       line-height: 2.5rem;
+       --tw-text-opacity: 1;
+       color: rgba(79,70,229,var(--tw-text-opacity));
+       font-weight: 500;
+   }
+   
+   img{
+       width:8%;
+   }
+   
    
    

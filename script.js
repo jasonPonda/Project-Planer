@@ -1,29 +1,60 @@
 
 const text = document.getElementById("text");
-const date = document.getElementById("party");
+const description = document.getElementById("text2")
 const addTaskButton = document.getElementById("add-task-btn");
 const saveTaskButton = document.getElementById("save-todo-btn");
 const listBox = document.getElementById("listBox");
 const saveInd = document.getElementById("saveIndex");
+const date1 = document.getElementById("dateInput1");
+const date2 = document.getElementById("dateInput2");
+
+function getDifferenceInDays(date1, date2) {
+
+    const dt_date1 = new Date(date1);
+    const dt_date2 = new Date(date2);
+
+     date1 = dt_date1.getTime();
+     date2 = dt_date2.getTime();
+
+    let calc;
+
+    if (date1 > date2) {
+        calc = new Date(date1 - date2);
+    } else {
+        calc = new Date(date2 - date1);
+    }
+
+   return calc;
+}
 
 
+
+//Tableau qui contient les nouvelles valeurs
 let todoArray = [];
 
+//bouton add qui ajoute les tâches avec le titre, la date et le jour restant
 addTaskButton.addEventListener("click", (e) => {
     e.preventDefault();
     let todo = localStorage.getItem("todo");
+    const remainingDays = getDifferenceInDays(date1, date2);
     if (todo === null) {
         todoArray = [];
     } else {
         todoArray = JSON.parse(todo);
     }
-    todoArray.push(`${text.value} ${date.value}`);
+    todoArray.push(`${text.value} ${description.value} ${date1.value} ${date2.value} ${remainingDays.value}`);
     text.value = " ";
-    date.value= "";
+    date1.value = "";
+    description.value = "";
+    date2.value = "";
+    remainingDays.value = "";
     localStorage.setItem("todo", JSON.stringify(todoArray));
     displayTodo();
 });
 
+
+
+//function qui affiche les boutons edit et delete
 function displayTodo() {
     let todo = localStorage.getItem("todo");
     if (todo === null) {
@@ -42,6 +73,7 @@ function displayTodo() {
     listBox.innerHTML = htmlCode;
 }
 
+//function du bouton delete
 function deleteTodo(ind) {
     let todo = localStorage.getItem("todo");
     todoArray = JSON.parse(todo);
@@ -50,6 +82,7 @@ function deleteTodo(ind) {
     displayTodo();
 }
 
+//function du bouton edit
 function edit(ind) {
     saveInd.value = ind;
     let todo = localStorage.getItem("todo");
@@ -59,6 +92,7 @@ function edit(ind) {
     saveTaskButton.style.display = "block";
 }
 
+//lorsqu'on modifie une tâche et qu'on l'enregistre
 saveTaskButton.addEventListener("click", () => {
     let todo = localStorage.getItem("todo");
     todoArray = JSON.parse(todo);
@@ -92,4 +126,36 @@ function clock2() {
 
 setInterval(clock2, 1000);
 
+//filtre
+let filterDiv = document.querySelector('#filterDiv')
+let dynamicDiv = document.createElement('div')
+dynamicDiv.setAttribute('id', 'clickables')
+filterDiv.appendChild(dynamicDiv)
+let searchBar = document.createElement('input');
+searchBar.type = 'text'
+searchBar.placeholder = 'Search';
+searchBar.className = 'searchBar';
+dynamicDiv.appendChild(searchBar);
+
+
+searchBar.addEventListener('keyup', (e) => {
+    console.log(e);
+    const inputLetters = e.target.value.toLowerCase();
+    const p = document.querySelectorAll("p");
+    console.log(p);
+    filterElements(inputLetters, p);
+});
+function filterElements(letters, elements) {
+    if (letters.length > 2) {
+        for (let i = 0; i < elements.lenght; i++) {
+            if (elements[i].textContent.toLowerCase().includes(letters.toLowerCase)) {
+                elements[i].item.style.display = "";
+
+
+            } else {
+                elements[i].item.style.display = "none"
+            }
+        }
+    }
+}
 
